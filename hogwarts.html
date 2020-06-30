@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hogwarts students</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Jim+Nightshade|Quattrocento&display=swap" rel="stylesheet">
+</head>
+
+<body homeStyle="">
+
+  <header>
+    <div class="headerPic"></div>
+  </header>
+
+  <main>
+    <!--------------------------------HOUSE THEMES--------------------------------------------->
+    <label id="shift-house-theme">
+      Choose House Theme:
+      <select name="theme" id="theme">
+        <option value="none">None</option>
+        <option value="gryffindor">Gryffindor House Theme</option>
+        <option value="hufflepuff">Hufflepuff House Theme</option>
+        <option value="ravenclaw">Ravenclaw House Theme</option>
+        <option value="slytherin">Slytherin House Theme</option>
+      </select>
+    </label>
+
+    <!--------------------------------SEARCH BOX--------------------------------------------->
+    <!-- got it from W3SCHOOLS (https://www.w3schools.com/howto/howto_js_filter_lists.asp) -->
+    <input type="text" id="myInput" onkeyup="mySearch()" placeholder="Search for names.." title="Type in a name">
+
+
+    <h1>Students at Hogwarts</h1>
+    <!--------------------------------FILTERING--------------------------------------------->
+    <div id="filters">
+      <p class="filterTitle"><span>Filter by House:</span></p>
+      <button class="filter" id="zoom-in" data-action="filter" data-filter="Gryffindor"><img src="houses/gryffindor.png"
+          alt="Gryffindor" class="buttonFilter"></button>
+      <button class="filter" id="zoom-in" data-action="filter" data-filter="Slytherin"><img src="houses/slytherin.png"
+          alt="Slytherin" class="buttonFilter"></button>
+      <button class="filter" id="zoom-in" data-action="filter" data-filter="Hufflepuff"><img src="houses/hufflepuff.png"
+          alt="Hufflepuff" class="buttonFilter"></button>
+      <button class="filter" id="zoom-in" data-action="filter" data-filter="Ravenclaw"><img src="houses/ravenclaw.png"
+          alt="Ravenclaw" class="buttonFilter"></button>
+      <button class="filter" id="zoom-in" data-action="filter" data-filter="*"><img src="houses/hogwarts.png"
+          alt="Hogwarts Houses" class="buttonFilter"></button>
+    </div>
+
+    <div id="mainPanel">
+
+      <div class="totalNumber">
+        <span class="gryfNum">Gryffindor (0)</span>
+        <span class="slyNum">Slytherin (0)</span>
+        <span class="huffNum">Hufflepuff (0)</span>
+        <span class="ravNum">Ravenclaw (0)</span>
+        <span class="totalNum">Total(0)</span>
+      </div>
+      <!--------------------------------SORTING STUDENTS--------------------------------------------->
+      <div id="sorting">
+        Sort Students By:
+        <p class="organizeBy" data-action="sort" data-sort-direction="asc" data-sort="firstN">First Name</p>
+        <p class="organizeBy" data-action="sort" data-sort-direction="asc" data-sort="lastN">Last Name</p>
+        <p class="organizeBy" data-action="sort" data-sort-direction="asc" data-sort="houseN">House Name</p>
+      </div>
+
+      <!--------------------------------EXPELLED STUDENTS--------------------------------------------->
+      <div id="expelled">
+        Show a List of:
+        <p class="showExpelledStudents">Expelled Students<span class="expelCount">Counter</span></p>
+        <button class="restore">All Students (Expelled or not)</button>
+      </div>
+      <!--  <p class="list school_Prefect">list here school_prefect:</p> -->
+
+    </div>
+    <!--------------------------------HACK THE STUDENT LIST--------------------------------------------->
+
+    <button id="zoom-in" class="hackTheStudentList" id="typewriter">Hack the Student List!</button>
+
+    <!--------------------------------TEMPLATE--------------------------------------------->
+    <template class="mainTemplate">
+      <article>
+        <img class="studentPic">
+        <div data-field="star">⭐</div>
+        <p class="studentsName"></p>
+        <p class="studentsMiddle"></p>
+        <p class="studentsLast"></p>
+        <p class="studentsFull"></p>
+        <p class="gender"></p>
+        <p class="houseName"></p>
+        <button class="more" id="zoom-in">More</button>
+        <button class="expell" id="zoom-in">Expell</button>
+
+      </article>
+    </template>
+    <section id="studentsMain">
+
+    </section>
+
+    <!-- Dialogs for handling too many prefects -->
+
+    <div id="onlytwoschool_prefects" class="dialog">
+      <div class="dialogcontent">
+        <button class="closebutton">close</button>
+        <h1>You can maximum have two prefects!</h1>
+        <h2>Remove one, before you appoint more</h2>
+        <p><button data-action="remove1">remove</button> <span class="student1">NAME, the TYPE</span></p>
+        <p><button data-action="remove2">remove</button> <span class="student2">NAME, the TYPE</span></p>
+      </div>
+    </div>
+
+    <div id="onlyoneofeachgender" class="dialog">
+      <div class="dialogcontent">
+        <button class="closebutton">close</button>
+        <h1>You can only have one prefect of each gender!</h1>
+        <h2>Remove one, before you appoint another</h2>
+        <p><button data-action="remove1">remove</button> <span class="student1">NAME, the TYPE</span></p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="jscript.js"></script>
+</body>
+
+</main>
+
+<!--------------------------------MODAL--------------------------------------------->
+<div class="modal-background hide">
+
+  <div class="modal-content" id="modal-content" data-house="">
+    <img class="modalHouses">
+    <img id="imageSchool_Prefect">
+    <p class="modalStudentsName" houseStyle="">first name here</p>
+    <p class="modalStudentsMiddle">middle name here</p>
+    <p class="modalStudentsLast">last name here</p>
+    <p class="modalSchool_Prefect">Is the student a Prefect or not</p>
+    <p class="modalExpelled">Was the student expelled or not</p>
+    <img class="modalPic">
+
+  </div>
+</div>
+
+</html>
